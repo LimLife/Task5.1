@@ -58,7 +58,7 @@ namespace VacationEmployee.Application
         private List<DateTime> CalculatedVacationEmployee()
         {
             int yearDays = (_endYear - _beginningYear).Days;
-            var dataVaasctions = new List<DateTime>();
+            var dataVacation = new List<DateTime>();
             var vactionDays = _vacationDay;
             while (vactionDays > 0)
             {
@@ -68,14 +68,14 @@ namespace VacationEmployee.Application
                     var randomVacationLength = _randomStepVacationDay[_random.Next(_randomStepVacationDay.Length)];
                     randomVacationLength = randomVacationLength > vactionDays ? randomVacationLength - vactionDays : randomVacationLength;
                     var temp = startVacation.AddDays(randomVacationLength);
-                    if (!dataVaasctions.Any(vacation => vacation.AddDays(3) >= startVacation && vacation.AddDays(3) <= _endYear))//??
+                    if (!dataVacation.Any(vacation => vacation.AddDays(3) >= startVacation && vacation.AddDays(3) <= _endYear))//??
                     {
                         vactionDays -= randomVacationLength;
-                        dataVaasctions.Add(temp);
+                        dataVacation.Add(temp);
                     }
                 }
             }
-            return dataVaasctions;
+            return dataVacation;
         }
     }
 }
